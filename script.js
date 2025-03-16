@@ -1,4 +1,5 @@
 // Select the form and response div
+// Select the form and response div
 document.getElementById('googleForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent page reload
 
@@ -15,16 +16,34 @@ document.getElementById('googleForm').addEventListener('submit', function(event)
         return;
     }
 
-    // Display response
-    document.getElementById('response').innerHTML = `
-        <p>✅ Form Submitted Successfully!</p>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Choice:</strong> ${choice.value}</p>
-        <p><strong>Dropdown:</strong> ${dropdown}</p>
-        <p><strong>Comments:</strong> ${comments || "No comments provided."}</p>
-    `;
+    // Send data to Google Sheets
+    const formData = {
+        name: name,
+        email: email,
+        choice: choice.value,
+        dropdown: dropdown,
+        comments: comments
+    };
 
-    // Clear form fields
-    this.reset();
+    fetch("https://script.google.com/macros/s/AKfycbxxinno6sxW4PoIZJKjVerPOedeVFJsz9AIj_nhexbYmqjwiAulZXNgavtygoMl1C3lgg/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert("Response Submitted!");
+        document.getElementById('response').innerHTML = `
+            <p>✅ Form Submitted Successfully!</p>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Choice:</strong> ${choice.value}</p>
+            <p><strong>Dropdown:</strong> ${dropdown}</p>
+            <p><strong>Comments:</strong> ${comments || "No comments provided."}</p>
+        `;
+        
+        // Clear form fields
+        document.getElementById("googleForm").reset();
+    })
+    .catch(error => console.error("Error:", error));
 });
