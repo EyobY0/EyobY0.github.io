@@ -25,7 +25,7 @@ document.getElementById('googleForm').addEventListener('submit', function(event)
         comments: comments
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbxxinno6sxW4PoIZJKjVerPOedeVFJsz9AIj_nhexbYmqjwiAulZXNgavtygoMl1C3lgg/exec", {
+    fetch("https://script.google.com/a/macros/student.breckschool.org/s/AKfycbylain0ua22USKNPD3O4hGH0S-1F82nQFvavP8LDuUH5yHt-5r_56laKip4U7stf_wzSQ/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
