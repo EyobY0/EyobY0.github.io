@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Form Clone</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <div class="form-container">
+        <h2>I have too much free time😸</h2>
+        <p>heheheh🈲</p>
+        
+        <p><strong><a href="#">Helloooo</a></strong> I made this for my comp sci class it was pretty much the same as my homework so I just made some simple changes</p>
+        
+        <form id="googleForm">
+            <!-- Multiple Choice Question with Flipped Label and Input -->
+            <label>How was it?</label>
+            <div>
+                <label for="great">GreatGreat😽</label>
+                <input type="radio" id="great" name="choice" value="Great🐱" required>
+            </div>
+            <div>
+                <label for="notGreat">Not so great</label>
+                <input type="radio" id="notGreat" name="choice" value="Not so great">
+            </div>
+            
+            <!-- Short Answer Text -->
+            <label for="recommendations">Recommendations😘</label>
+            <input type="text" id="recommendations" name="recommendations" placeholder="Short answer text">
+            
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+        
+        <!-- Response Section -->
+        <div id="response"></div>
+    </div>
+
+    <script src="script.js"></script> <!-- Link to external JavaScript file -->
+</body>
+</html>
